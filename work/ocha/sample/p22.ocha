@@ -1,0 +1,20 @@
+#!../bin/otemae
+
+a = 5;
+b = 7;
+show_status;
+
+if a >= 0 then
+  b := b + a
+else
+  b := b - a
+end-if;
+show_status;
+
+if a >= 0 then
+  a := -a
+end-if;
+show_status;
+
+b := b + a;
+show_status

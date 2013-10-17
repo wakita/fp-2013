@@ -1,0 +1,25 @@
+#!../bin/otemae
+
+a = [ 3, 1, 5, 2, 4, 0 ];
+print a;
+
+print "Sorting...";
+
+n = 6;
+tmp = 0;
+
+for i = 0 to n - 1 do
+  min = a[i];
+  min_pos = i;
+
+  for j = i + 1 to n - 1 do
+    if a[j] < min then
+      min := a[j]; min_pos := j
+    end-if
+  end-for;
+  tmp = a[i]; a[i] := a[min_pos]; a[min_pos] := tmp
+end-for;
+
+print "Done.";
+
+print a

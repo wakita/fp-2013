@@ -1,0 +1,9 @@
+#!../bin/otemae
+
+array = [ 1, 2, 3, 4, 5 ];
+a1 = array[0];
+a5 = array[4];
+show_status;
+
+array[2] := array[2] * 10;
+show_status

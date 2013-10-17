@@ -1,0 +1,47 @@
+#!../bin/otemae
+
+$1 = 10;
+show_status;
+
+$1 := 11;
+show_status;
+
+$1 := "foo";
+show_status;
+
+$2 = 15;
+b1 = true;
+b2 = false;
+c = 'a';
+s = "Hello world!";
+show_status;
+
+if b2 then
+   s := "true branch"
+else
+   s := "false branch"
+end-if;
+show_status;
+
+if 1 = 0 then
+  s := "Mr. computer are you sure?"
+end-if;
+
+if 1 == 0 then
+   s := "Mr. computer.  Are you sure?"
+else
+   s := "I thought so.  Really..."
+end-if;
+show_status;
+
+a = 5;
+a := a + a * a;
+print a;
+
+a = "Hello world!  ";
+a := a + a;
+print a;
+
+a = 5;
+a = a + "Hello world!";
+print a
