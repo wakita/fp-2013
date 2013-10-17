@@ -1,0 +1,10 @@
+#!../bin/otemae
+
+sum = 0;
+i = 1;
+n = 10;
+while i <= n do
+  sum := sum + i;
+  i := i + 1;
+  show_status
+end-while
