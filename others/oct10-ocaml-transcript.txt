@@ -1,0 +1,260 @@
+======================================================================
+An API browser for OCaml
+
+rudolf:~$ ocamlbrowser 
+
+======================================================================
+Starting and finishing OCaml interpreter
+
+rudolf:~$ ocaml
+        OCaml version 4.00.1
+
+# ^D
+
+rudolf:~$ 
+
+======================================================================
+Step 1. Primitive values
+----------------------------------------------------------------------
+
+rudolf:~$ ocaml
+        OCaml version 4.00.1
+
+# 0;;
+- : int = 0
+# 1;;
+- : int = 1
+# 0.0;;
+- : float = 0.
+# 0.;;
+- : float = 0.
+# "moji"
+  ;;
+- : string = "moji"
+# 1 +
+  2 +
+  3 +
+  4 + 
+  5;;
+- : int = 15
+# 1.0 + 2.0;;
+Error: This expression has type float but an expression was expected of type
+         int
+# (+);;
+- : int -> int -> int = <fun>
+# (+.);;
+- : float -> float -> float = <fun>
+# 'c';;
+- : char = 'c'
+# true;;
+- : bool = true
+# false;;
+- : bool = false
+# true && false;;
+- : bool = false
+# true || false;;
+- : bool = true
+
+======================================================================
+Step 2. (Recursive) Function definition
+----------------------------------------------------------------------
+
+# let f x = x + 1;;
+val f : int -> int = <fun>
+# f 3;;
+- : int = 4
+# let add x y = x + y;;
+val add : int -> int -> int = <fun>
+# add 3 4;;
+- : int = 7
+# let m x = x * 3;;
+val m : int -> int = <fun>
+# m 3;;
+- : int = 9
+# let fib x = if x < 2 then x else fib (x-1) (x-2);;
+Error: Unbound value fib
+# let rec fib x = if x < 2 then x else fib (x-1) + fib (x-2);;
+val fib : int -> int = <fun>
+# fib 0;;
+- : int = 0
+# fib 1;;
+- : int = 1
+# fib 2;;
+- : int = 1
+# fib 3;;
+- : int = 2
+# fib 4;;
+- : int = 3
+# fib 5;;
+- : int = 5
+# fib 6;;
+- : int = 8
+# fib 7;;
+- : int = 13
+# fib 8;;
+- : int = 21
+# fib 9;;
+- : int = 34
+# for i = 0 to 10 do Printf.printf "%d\n" (fib i) done;;
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+- : unit = ()
+# let rec fib x = if x < 2 then x else ((fib (x-1))+(fib (x-2)));;
+val fib : int -> int = <fun>
+# let rec fib x = if x < 2 then x else fib (x-1) + fib (x-2);;
+val fib : int -> int = <fun>
+# let rec fact x = if x=1 then 1 else x*fact(x-1);;
+val fact : int -> int = <fun>
+# fact 5;;
+- : int = 120
+# fact 10;;
+- : int = 3628800
+# fact 20;;
+- : int = 2432902008176640000
+# fact 30;;
+- : int = 458793068007522304
+# (==);;
+- : 'a -> 'a -> bool = <fun>
+# [];;
+
+======================================================================
+Step 3. A compound data (1): Lists
+----------------------------------------------------------------------
+
+- : 'a list = []
+# [1];;
+- : int list = [1]
+# [2;3];;
+- : int list = [2; 3]
+# [2,3];;
+- : (int * int) list = [(2, 3)]
+# 2,3;;
+- : int * int = (2, 3)
+# 2 :: 3 :: [];;
+- : int list = [2; 3]
+let l = [ 1; 2; 3 ];;
+val l : int list = [1; 2; 3]
+# List.hd;;
+- : 'a list -> 'a = <fun>
+# List.hd l;;
+- : int = 1
+# List.tl l;;
+- : int list = [2; 3]
+# List.hd (List.tl l);;
+- : int = 2
+# List.length l;;
+- : int = 3
+# (^);;
+- : string -> string -> string = <fun>
+# (@);;
+- : 'a list -> 'a list -> 'a list = <fun>
+# l @ l;;
+- : int list = [1; 2; 3; 1; 2; 3]
+# List.append;;
+- : 'a list -> 'a list -> 'a list = <fun>
+# List.append l l;;
+- : int list = [1; 2; 3; 1; 2; 3]
+# m;; 
+- : int -> int = <fun>
+# List.map m l;;
+- : int list = [3; 6; 9]
+
+(# Topic: Operators as functions (and a pitfall with comment syntax) #)
+
+# (*);;
+  ;;ing 1: this is the start of a comment.
+  *);;
+* *);;
+Error: Syntax error
+# ( *);;
+Warning 2: this is not the end of a comment.
+- : int -> int -> int = <fun>
+# ( * );;
+- : int -> int -> int = <fun>
+# (* this is a comment *) 1;;
+- : int = 1
+# (+);;
+- : int -> int -> int = <fun>
+# 5 + 6;;
+- : int = 11
+# (+) 5 6;;
+- : int = 11
+# (+) 5;;
+- : int -> int = <fun>
+
+######################################################################
+Topic 4. Lists and higher-order functions
+         A higer-order function is a function that plays with functions
+----------------------------------------------------------------------
+
+# List.map (( * ) 3) l;;
+- : int list = [3; 6; 9]
+# let rec length l =
+  match l with
+  [] -> 0
+  | hd :: tl -> 1 + length tl;;
+val length : 'a list -> int = <fun>
+# length l;;
+- : int = 3
+# let l = [1;2;3];;
+val l : int list = [1; 2; 3]
+# let rec sum l =
+  match l with
+  | [] -> 0
+  | hd :: tl -> hd + sum tl;;
+val sum : int list -> int = <fun>
+# sum [1;2;3;4;5]
+  ;;
+- : int = 15
+# let rec sum = function
+  | [] -> 0
+  | hd :: tl -> hd + sum tl;;
+val sum : int list -> int = <fun>
+# sum [1;2;3;4;5];;
+- : int = 15
+
+######################################################################
+Topic 5. Compound data (2): Pairs, triples, and tuples
+         Pattern matching
+----------------------------------------------------------------------
+
+# (1, 2);;
+- : int * int = (1, 2)
+# let pair = 3, 5;;
+val pair : int * int = (3, 5)
+# match pair with (fst, snd) -> fst;;
+- : int = 3
+# match pair with (fst, _) -> fst;;
+- : int = 3
+# let _abc = 3;;
+val _abc : int = 3
+# let snd pair = match pair with (_, snd) -> snd;;
+val snd : 'a * 'b -> 'b = <fun>
+# let snd pair = function (_, snd) -> snd;;
+val snd : 'a -> 'b * 'c -> 'c = <fun>
+# Pervasives.snd;;
+- : 'a * 'b -> 'b = <fun>
+# (1, 1);;
+- : int * int = (1, 1)
+# (1, "abc")
+  ;;
+- : int * string = (1, "abc")
+# let snd = function (_, snd) -> snd;;
+val snd : 'a * 'b -> 'b = <fun>
+# List.sort;;
+- : ('a -> 'a -> int) -> 'a list -> 'a list = <fun>
+# compare;;
+- : 'a -> 'a -> int = <fun>
+# List.sort compare [3; 2; 5; 0; 7];;
+- : int list = [0; 2; 3; 5; 7]
+# List.sort (fun x y -> -(compare x y)) [3; 2; 5; 0; 7];;
+- : int list = [7; 5; 3; 2; 0]
