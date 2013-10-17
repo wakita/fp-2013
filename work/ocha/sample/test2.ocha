@@ -1,0 +1,10 @@
+#!../bin/otemae
+
+s = "";
+if 1 = 0 then
+  s := "Are you sure?"
+else
+  s := "I agree."
+end-if;
+
+show_status

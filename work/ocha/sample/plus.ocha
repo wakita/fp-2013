@@ -1,0 +1,18 @@
+#!../bin/otemae
+
+comment = "5 + 5 * 5";
+a = 5;
+a := a + a * a;
+show_status;
+
+comment := "Hello world! + Hello world!";
+a := "Hello world!  ";
+a := a + a;
+show_status;
+
+comment := "5 + Hello world!";
+print comment;
+a := 5;
+a := a + "Hello world!";
+show_status
+

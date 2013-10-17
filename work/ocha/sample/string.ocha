@@ -1,0 +1,9 @@
+#!../bin/otemae
+
+s1 = "Hello"; s2 = " "; s3 = "world!";
+s = s1 + s2 + s3;
+c = s[0];
+show_status;
+
+s[5] := '_';
+show_status
