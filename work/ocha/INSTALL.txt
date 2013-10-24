@@ -1,20 +1,20 @@
 Copyright (C) 2004-2013  Ken Wakita.  All rights reserved.
 
-�ܥ��եȥ��������ѥå������ι��ۤˤϡ�Objective Caml version 2.06 �ʾ塢
-�ڤ� make, bison, gcc, ld ���� GNU ware ��ɬ�פǤ���make �ˤĤ��Ƥϡ�
-BSD �ǤǤϤ��ޤ������Ǥ��ʤ���ǽ��������ޤ���ɬ�פǤ���С�GNU �Ǥ� 
-make �����Ѥ��Ʋ�������
+本ソフトウェア・パッケージの構築には、Objective Caml version 2.06 以上、
+及び make, bison, gcc, ld 等の GNU ware が必要です。make については、
+BSD 版ではうまく処理できない可能性があります。必要であれば、GNU 版の 
+make を利用して下さい。
 
-�ܥ��եȥ��������ѥå�������Ÿ�������顢src�ǥ��쥯�ȥ�˰�ư�����ʲ�
-�Υ��ޥ�ɤ�¹Ԥ��Ʋ�������
+本ソフトウェア・パッケージを展開したら、srcディレクトリに移動し、以下
+のコマンドを実行して下さい。
 
 	make install
         make clean
 
-�֤���׸���Υ��󥿥ץ꥿��������륳�ޥ�� otemae �ϡ�bin ���֥ǥ��쥯
-�ȥ�˥��󥹥ȡ��뤵��ޤ���sample �ǥ��쥯�ȥ�ʲ�����¸����Ƥ���
-�֤���׸���Υץ�������¹Ԥ��ƥ��󥹥ȡ��뤬���ޤ����äƤ��뤫�ɤ�
-�����ǧ���Ʋ�������
+「お茶」言語のインタプリタを実装するコマンド otemae は、bin サブディレク
+トリにインストールされます。sample ディレクトリ以下に保存されている
+「お茶」言語のプログラムを実行してインストールがうまくいっているかどう
+かを確認して下さい。
 
-otemae ���ޥ�ɤΥ�å�������UTF-8�ǽ��Ϥ���ޤ���otemae ���ޥ�ɤ��
-�Ԥ���Ȥ��ˤ����ܸ� UTF-8 �򥵥ݡ��Ȥ��������ߥʥ�Ķ������Ѥ��Ʋ�������
+otemae コマンドのメッセージはUTF-8で出力されます。otemae コマンドを実
+行するときには日本語 UTF-8 をサポートしたターミナル環境を利用して下さい。
