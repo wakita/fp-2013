@@ -1,6 +1,6 @@
 #!../bin/otemae
 
-comment = "Ã±½ãÁíÏÂ¤½¤Î1 (p. 24)";
+comment = "å˜ç´”ç·å’Œãã®1 (p. 24)";
 print comment;
 
 ans = 0; n = 10;
@@ -9,7 +9,7 @@ for i = 1 to n do
 end-for;
 print ans;
 
-comment = "Ã±½ãÁíÏÂ¤½¤Î2 (p. 24)";
+comment = "å˜ç´”ç·å’Œãã®2 (p. 24)";
 print comment;
 
 ans = 0; n = 10; i = 1;
@@ -19,10 +19,10 @@ while i <= n do
 end-while;
 print ans;
 
-comment = "Ê¸»úÎóÈæ³Ó (p. 25)";
+comment = "æ–‡å­—åˆ—æ¯”è¼ƒ (p. 25)";
 print comment;
 
-comment = "À°Îó²½ (p. 26)";
+comment = "æ•´åˆ—åŒ– (p. 26)";
 print comment;
 
 a = [ 3, 1, 5, 2, 4, 0 ];
@@ -36,7 +36,8 @@ for i = 0 to n - 1 do
   for j = i + 1 to n - 1 do
     if a[j] < min then
       min := a[j]; min_pos := j
-    end-if
+    end-if;
+    show_status
   end-for;
   tmp = a[i]; a[i] := a[min_pos]; a[min_pos] := tmp
 end-for;
