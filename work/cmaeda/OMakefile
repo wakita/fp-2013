@@ -1,0 +1,17 @@
+.PHONY: all install clean
+
+BYTE_ENABLED   = true
+NATIVE_ENABLED = false
+
+# OCAMLFLAGS    +=
+# OCAMLCFLAGS   +=
+# OCAMLOPTFLAGS +=
+# OCAML_LINK_FLAGS +=
+# OCAML_BYTE_LINK_FLAGS +=
+# OCAML_NATIVE_LINK_FLAGS +=
+
+.DEFAULT: $(OCamlLibrary myStack, myStack)
+.DEFAULT: $(OCamlLibrary vector, vector)
+
+clean:
+	rm -f *.cm* *.o

@@ -1,0 +1,8 @@
+.ocamlinit:
+This file is loaded when an OCaml interpreter starts.  It loads and opens all the modules define here.
+
+myStack.mli: The interface of MyStack module.
+myStack.ml: An implementation of MyStack module.
+
+vector.ml: The interface of Vector module
+vector.mli: An implementation of Vector module.
