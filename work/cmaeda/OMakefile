@@ -12,6 +12,8 @@ NATIVE_ENABLED = false
 
 .DEFAULT: $(OCamlLibrary myStack, myStack)
 .DEFAULT: $(OCamlLibrary vector, vector)
+.DEFAULT: $(OCamlLibrary mySet, mySet)
+.DEFAULT: $(OCamlLibrary redBlack, redBlack)
 
 clean:
 	rm -f *.cm* *.o

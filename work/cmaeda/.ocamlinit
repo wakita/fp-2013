@@ -1,6 +1,3 @@
 #load "myStack.cma";;
 #load "vector.cma";;
 #load "mySet.cma";;
-open MyStack;;
-open Vector;;
-open MySet;;

@@ -9,6 +9,7 @@ sig
   type elem
   type t
   val empty : t
+  val to_list : t -> elem list
   val member : elem -> t -> bool
   val insert : elem -> t -> t
 end
@@ -19,6 +20,10 @@ struct
   type t = E | T of t * elem * t
 
   let empty = E
+
+  let rec to_list = function
+    | E -> []
+    | T(s1, e, s2) -> (to_list s1) @ [e] @ (to_list s2)
 
   let rec member x = function
     | E -> false
