@@ -1,3 +1,4 @@
 #load "myStack.cma";;
 #load "vector.cma";;
 #load "mySet.cma";;
+#load "redBlack.cma";;
