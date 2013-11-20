@@ -30,5 +30,5 @@ let tail = function
 
 let rec update xs i y = match xs with
   | Nil -> raise Subscript
-  | Cons(x, xs) ->
-      if i = 0 then Cons(y, xs) else update xs (i - 1) y
+  | Cons(x, xs') ->
+      if i = 0 then Cons(y, xs') else Cons(x, update xs' (i - 1) y)

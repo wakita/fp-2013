@@ -15,11 +15,22 @@ let rec member x = function
       else true
 
 let balance = function
-  | (B, T(R, T(R, a, x, b), y, c), z, d) -> T(R, T(B, a, x, b), y, T(B, c, z, d))
-  | (B, T(R, a, x, T(R, b, y, c)), z, d) -> T(R, T(B, a, x, b), y, T(B, c, z, d))
-  | (B, a, x, T(R, T(R, b, y, c), z, d)) -> T(R, T(B, a, x, b), y, T(B, c, z, d))
-  | (B, a, x, T(R, b, y, T(R, c, z, d))) -> T(R, T(B, a, x, b), y, T(B, c, z, d))
-  | (c, t1, x, t2) -> T(c, t1, x, t2)
+  | (B,
+     T(R,
+       T(R, a, x, b),
+       y,
+       c),
+     z,
+     d) ->
+      T(R, T(B, a, x, b), y, T(B, c, z, d))
+  | (B, T(R, a, x, T(R, b, y, c)), z, d) ->
+      T(R, T(B, a, x, b), y, T(B, c, z, d))
+  | (B, a, x, T(R, T(R, b, y, c), z, d)) ->
+      T(R, T(B, a, x, b), y, T(B, c, z, d))
+  | (B, a, x, T(R, b, y, T(R, c, z, d))) ->
+      T(R, T(B, a, x, b), y, T(B, c, z, d))
+  | (c, t1, x, t2) ->
+      T(c, t1, x, t2)
 
 let rec insert x s =
   let rec ins = function
