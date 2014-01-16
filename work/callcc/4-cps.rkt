@@ -218,19 +218,17 @@
 ;
 ;(define (FACT n k)
 ;  (let ((k1 (lambda (v) (if v (k 1)
-;                          CPS[(let ((v1 (fact (- n 1)))) (* n v1)), k]
 ;                          (let ((k2 (lambda (x)
 ;                                      (let ((v1 x))
-;                                        CPS[(* n v1), k1]))))
+;                                        CPS[(* n v1), k]))))
 ;                            CPS[(fact (- n 1)), k2])))))
 ;    (=@ n 0 k1)))
 ;
 ;(define (FACT n k)
 ;  (let ((k1 (lambda (v) (if v (k 1)
-;                          CPS[(let ((v1 (fact (- n 1)))) (* n v1)), k]
 ;                          (let ((k2 (lambda (x)
 ;                                      (let ((v1 x))
-;                                        (*@ n v1 k1)))))
+;                                        (*@ n v1 k)))))
 ;                            CPS[(let ((v2 (- n 1))) (fact v2)), k2])))))
 ;    (=@ n 0 k1)))
 ;
